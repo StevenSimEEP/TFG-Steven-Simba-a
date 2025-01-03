@@ -1,0 +1,3 @@
+INDEX VERSION 1.134
+file:/C:/Users/stede/OneDrive/Escritorio/Proyecto%20sistemas%20de%20examenes/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+meta_index
