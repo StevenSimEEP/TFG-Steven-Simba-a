@@ -37,15 +37,25 @@ public class AuthenticationController {
 	@PostMapping("/generate-token")
 	@CrossOrigin("*")
 	public ResponseEntity<?> generarToken(@RequestBody JwtRequest jwtRequest) throws Exception {
+	    System.out.println("Solicitud de generación de token para usuario: " + jwtRequest.getUsername());
+
 		try {
 			autenticar(jwtRequest.getUsername(), jwtRequest.getPassword());
+	        System.out.println("Autenticación exitosa");
 		} catch (UsuarioNotFoundException exception) {
 			exception.printStackTrace();
 			throw new Exception("Usuario no encotrado");
-		}
+		} catch (Exception e) {
+	        System.out.println("Error durante la autenticación: " + e.getMessage());
+	        throw e;
+	    }
 		
 		UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
+	    System.out.println("Cargando detalles del usuario: " + userDetails.getUsername());
+
 		String token = this.jwtUtils.generateToken(userDetails);
+	    System.out.println("Token generado: " + token);
+
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 	
