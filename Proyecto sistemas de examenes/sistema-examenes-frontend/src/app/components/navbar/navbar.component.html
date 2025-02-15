@@ -1,31 +1,24 @@
 <mat-toolbar color="primary">
-  <a [routerLink]="'/'"
-      mat-icon-button = "example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu_books</mat-icon>
+  <!-- Icono y título -->
+  <a [routerLink]="'/'" mat-icon-button aria-label="Ir al inicio">
+    <mat-icon>menu_books</mat-icon>
   </a>
   <span>Portal de exámenes</span>
+
+  <!-- Espaciador -->
   <span class="example-spacer"></span>
-  <a
-    *ngIf="!login.isLoggedIn()"
-    [routerLink]="'/login'" mat-icon-button class="example-icon favorite-icon mr70" aria-label="Example icon-button with heart icon">
-    Iniciar sesión
-  </a>
-  <a
-    *ngIf="!login.isLoggedIn()"
-    [routerLink]="'/signup'" mat-icon-button class="example-icon favorite-icon mr70 ml70" aria-label="Example icon-button with heart icon">
-    Registrar
-  </a>
-  <a
-    *ngIf="login.isLoggedIn()"
-    (click) = "logout()"
-    mat-icon-button class="example-icon favorite-icon mr70 ml70" aria-label="Example icon-button with heart icon">
-    Cerrar sesión
-  </a>
-  <button
-    *ngIf="login.isLoggedIn()"
-    mat-button
-    style="margin-right: 10px;"
-    class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    {{ login.getUser().username }}
-  </button>
+
+  <!-- Mostrar botones solo si el usuario no está logueado -->
+  <ng-container *ngIf="!login.isLoggedIn()">
+    <a [routerLink]="'/login'" mat-button>Iniciar sesión</a>
+    <a [routerLink]="'/signup'" mat-button>Registrar</a>
+  </ng-container>
+
+  <!-- Mostrar datos del usuario si está logueado -->
+  <ng-container *ngIf="login.isLoggedIn()">
+    <button mat-button style="margin-right: 10px;">
+      {{ user?.userName || 'Usuario' }}
+    </button>
+    <a (click)="logout()" mat-button>Cerrar sesión</a>
+  </ng-container>
 </mat-toolbar>

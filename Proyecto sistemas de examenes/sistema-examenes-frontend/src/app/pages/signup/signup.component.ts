@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class SignupComponent implements OnInit {
 
   public user = {
-    username: '',
+    userName: '',
     password : '',
     nombre: '',
     apellido: '',
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
 
   formSubmit(){
     console.log(this.user);
-    if(this.user.username == '' || this.user.username == null){
+    if(this.user.userName == '' || this.user.userName == null){
       this.snack.open('El nombre de usuario es requqerido!!', 'Aceptar',{
         duration : 3000,
         verticalPosition: 'top',

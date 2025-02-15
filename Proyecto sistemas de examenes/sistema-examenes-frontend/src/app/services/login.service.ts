@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helper';
 import { Subject } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,9 @@ export class LoginService {
 
   //generamos el token
   public generateToken(loginData:any) {
-    return this.http.post(`${baseUrl}/generate-token`,loginData);
+    return this.http.post(`${baseUrl}/auth/login`,loginData, {
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
   //iniciamos sesión y establecesmo el token en el localStroge
@@ -59,6 +64,15 @@ export class LoginService {
   }
 
   public getCurrentUser() {
-    return this.http.get(`${baseUrl}/actual-usuario`);
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.getToken()}`
+    });
+
+    return this.http.get(`${baseUrl}/auth/actual-usuario`, { headers }).pipe(
+      catchError(error => {
+        console.error("Error al obtener usuario:", error);
+        return throwError(() => new Error("No se pudo obtener el usuario."));
+      })
+    );
   }
 }
