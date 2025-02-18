@@ -7,19 +7,25 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  user: any = null; // Variable para almacenar los datos del usuario
+  isLoggedIn = false;
+  user:any = null;
 
   constructor(public login: LoginService) {}
 
   ngOnInit(): void {
-    if (this.login.isLoggedIn()) {
-      this.user = this.login.getUser(); // Obtener el usuario si ya está logueado
-    }
+    this.isLoggedIn = this.login.isLoggedIn();
+    this.user = this.login.getUser();
+    this.login.loginStatusSubjec.asObservable().subscribe(
+      data => {
+        this.isLoggedIn = this.login.isLoggedIn();
+        this.user = this.login.getUser();
+      }
+    )
   }
 
   public logout() {
     this.login.logout();
-    this.user = null; // Limpiar usuario al cerrar sesión
+    this.user = null;
     window.location.reload();
   }
 }

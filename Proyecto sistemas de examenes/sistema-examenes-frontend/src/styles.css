@@ -16,7 +16,7 @@ body {
 }
 
 .ml20{
-  margin-left: 20px !important ;
+  margin-left: 20px !important;
 }
 
 .mr20{
@@ -32,7 +32,7 @@ body {
 }
 
 .ml10{
-  margin-left: 10px !important ;
+  margin-left: 10px !important;
 }
 
 .mr10{
@@ -49,8 +49,4 @@ body {
 
 .ml70{
   margin-left: 70px !important;
-}
-
-.mr70{
-  margin-right: 70px !important;
 }

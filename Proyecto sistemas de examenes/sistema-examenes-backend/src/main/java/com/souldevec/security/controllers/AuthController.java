@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.souldevec.security.dtos.LoginUserDto;
 import com.souldevec.security.dtos.NewUserDto;
+import com.souldevec.security.entities.User;
+import com.souldevec.security.repositories.UserRepository;
 import com.souldevec.security.services.AuthService;
 import com.souldevec.security.services.UserService;
 
@@ -30,11 +32,13 @@ public class AuthController {
 
 	private final AuthService authService;
 	private final UserService userService;
+	private final UserRepository userRepository;
 
 	@Autowired
-	public AuthController(AuthService authService, UserService userService) {
+	public AuthController(AuthService authService, UserService userService, UserRepository userRepository) {
 		this.authService = authService;
 		this.userService = userService;
+		this.userRepository = userRepository;
 	}
 
 	@PostMapping("/login")
@@ -83,10 +87,21 @@ public class AuthController {
 	    if (userDetails == null) {
 	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Usuario no autenticado"));
 	    }
+	    
+		User user = userRepository.findByUserName(userDetails.getUsername()).orElse(null);
+
+	    if (user == null) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Usuario no encontrado"));
+	    }
 
 	    Map<String, Object> userResponse = new HashMap<>();
 	    userResponse.put("username", userDetails.getUsername());
 	    userResponse.put("authorities", userDetails.getAuthorities());
+	    userResponse.put("nombre", user.getNombre());
+	    userResponse.put("apellido", user.getApellido());
+	    userResponse.put("email", user.getEmail());
+	    userResponse.put("telefono", user.getTelefono());
+	    
 
 	    return ResponseEntity.ok(userResponse);
 	}
