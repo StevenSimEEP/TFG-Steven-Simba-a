@@ -12,4 +12,20 @@ export class ExamenService {
   public listarCuertionarios() {
     return this.http.get(`${baseUrl}/exam/`);
   }
+
+  public agregarExamen(examen:any) {
+    return this.http.post(`${baseUrl}/exam/`, examen);
+  }
+
+  public eliminarExamen(examId:any) {
+    return this.http.delete(`${baseUrl}/exam/${examId}`);
+  }
+
+  public obtenerExamen(examId:any) {
+    return this.http.get(`${baseUrl}/exam/${examId}`);
+  }
+
+  public actualizarExamen(examen:any) {
+    return this.http.put(`${baseUrl}/exam/`, examen);
+  }
 }

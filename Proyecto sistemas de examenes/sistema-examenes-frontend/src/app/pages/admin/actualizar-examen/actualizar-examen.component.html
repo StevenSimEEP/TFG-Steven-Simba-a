@@ -1,22 +1,22 @@
 <mat-card>
-  <h1>Agregar nuevo examen</h1>
+  <h1>Actualizar examen</h1>
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <form (ngSubmit) = "guardarCuestionario()">
+      <form *ngIf = "exam" (submit) = "actualizarDatos()">
         <mat-form-field class="w100" appearance="fill">
           <mat-label>Título</mat-label>
           <input
-          [(ngModel)] = "examenData.title"
+          [(ngModel)] = "exam.title"
           type="text"
           name="title"
-          required
           placeholder="Digite el título"
+          required
           matInput>
         </mat-form-field>
         <mat-form-field class="w100" appearance="fill">
           <mat-label>Descripción</mat-label>
           <textarea
-          [(ngModel)] = "examenData.description"
+          [(ngModel)] = "exam.description"
           type="text"
           name="description"
           placeholder="Digite la Descripción"
@@ -29,7 +29,7 @@
             <mat-form-field class="w100" appearance="fill">
               <mat-label>Puntos máximos</mat-label>
               <input
-              [(ngModel)] = "examenData.pointsMax"
+              [(ngModel)] = "exam.pointsMax"
               type="text"
               name="pointsMax"
               placeholder="Digite la cantidad de puntos"
@@ -40,7 +40,7 @@
             <mat-form-field class="w100" appearance="fill">
               <mat-label>Número de preguntas</mat-label>
               <input
-              [(ngModel)] = "examenData.numberQuestions"
+              [(ngModel)] = "exam.numberQuestions"
               type="text"
               name="numberQuestions"
               placeholder="Digite el número de preguntas"
@@ -49,14 +49,14 @@
           </div>
         </div>
 
-        <mat-slide-toggle class="mt20" name = "active" [(ngModel)] = "examenData.active" color="primary">
+        <mat-slide-toggle class="mt20" name = "active" [(ngModel)] = "exam.active" color="primary">
           Estado de publicación
         </mat-slide-toggle>
 
         <mat-form-field appearance="fill" class="mt20 w100">
           <mat-label>Categorías</mat-label>
-          <mat-select name="category" [(ngModel)]= "examenData.category.categoryId">
-            <mat-option *ngFor = "let c of categorias" [value] = "c.categoryId">
+          <mat-select name="category" [(ngModel)]= "exam.category.categoryId">
+            <mat-option *ngFor = "let c of categories" [value] = "c.categoryId">
               {{ c.title }}
             </mat-option>
           </mat-select>
