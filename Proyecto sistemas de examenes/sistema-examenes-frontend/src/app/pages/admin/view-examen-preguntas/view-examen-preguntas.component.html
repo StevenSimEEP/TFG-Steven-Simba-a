@@ -39,7 +39,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-button (click) = "eliminarPregunta(q.questionId)" color="warn">Eliminar</button>
-          <button mat-button color="primary">Actualizar</button>
+          <button mat-button [routerLink] = "'/admin/pregunta/'+q.questionId" color="primary">Actualizar</button>
         </mat-card-actions>
       </mat-card>
     </div>

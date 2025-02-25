@@ -20,4 +20,12 @@ export class PreguntaService {
   public eliminarPregunta(questionId:any) {
     return this.http.delete(`${baseUrl}/question/${questionId}`);
   }
+
+  public actualizarPregunta(question:any) {
+    return this.http.put(`${baseUrl}/question/`, question);
+  }
+
+  public obtenerPregunta(questionId:any) {
+    return this.http.get(`${baseUrl}/question/${questionId}`);
+  }
 }
