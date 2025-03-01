@@ -28,4 +28,16 @@ export class ExamenService {
   public actualizarExamen(examen:any) {
     return this.http.put(`${baseUrl}/exam/`, examen);
   }
+
+  public listarExamenesDeUnaCategoria(categoryId:any) {
+    return this.http.get(`${baseUrl}/exam/category/${categoryId}`);
+  }
+
+  public obtenerExamenesActivos() {
+    return this.http.get(`${baseUrl}/exam/active`)
+  }
+
+  public obtenerExamenesActivosDeUnaCategoria(categoryId:any) {
+    return this.http.get(`${baseUrl}/exam/category/active/${categoryId}`);
+  }
 }

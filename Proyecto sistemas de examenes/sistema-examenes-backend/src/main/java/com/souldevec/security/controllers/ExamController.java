@@ -1,5 +1,7 @@
 package com.souldevec.security.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.souldevec.security.entities.Category;
 import com.souldevec.security.entities.Exam;
 import com.souldevec.security.services.ExamService;
 
@@ -55,5 +58,25 @@ public class ExamController {
 	    }
 	    examService.deleteExam(examId);
 	    return ResponseEntity.ok().build();
+	}
+	
+	
+	@GetMapping("/category/{categoryId}")
+	public List<Exam> listExamsByCategory(@PathVariable("categoryId") Long categoryId) {
+		Category category = new Category();
+		category.setCategoryId(categoryId);
+		return examService.listExamsByCategory(category);
+	}
+	
+	@GetMapping("/active")
+	public List<Exam> listActiveExams() {
+		return examService.getActiveExams(); 
+	}
+	
+	@GetMapping("/category/active/{categoryId}")
+	public List<Exam> listActiveExamsByCategory(@PathVariable("categoryId") Long categoryId) {
+		Category category = new Category();
+		category.setCategoryId(categoryId);
+		return examService.getActiveExamsByCategory(category);
 	}
 }

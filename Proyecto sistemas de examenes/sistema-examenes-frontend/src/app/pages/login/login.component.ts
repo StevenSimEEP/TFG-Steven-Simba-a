@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
             if (userRole === "ADMIN") {
               this.router.navigate(['admin']);
             } else if (userRole === "NORMAL") {
-              this.router.navigate(['user-dashboard']);
+              this.router.navigate(['user-dashboard/0']);
             } else {
               this.loginService.logout();
               this.snack.open('Rol no reconocido. Inténtalo de nuevo.', 'Aceptar', { duration: 3000 });

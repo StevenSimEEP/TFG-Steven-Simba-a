@@ -1,11 +1,13 @@
 package com.souldevec.security.services.impl;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.souldevec.security.entities.Category;
 import com.souldevec.security.entities.Exam;
 import com.souldevec.security.repositories.ExamRepository;
 import com.souldevec.security.services.ExamService;
@@ -44,5 +46,20 @@ public class ExamServiceImpl implements ExamService {
 		} else {
 			throw new RuntimeException("No se encontró el examen con ID: " + examId);
 		}
+	}
+
+	@Override
+	public List<Exam> listExamsByCategory(Category category) {
+		return this.examRepository.findByCategory(category);
+	}
+
+	@Override
+	public List<Exam> getActiveExams() {
+		return examRepository.findByActive(true);
+	}
+
+	@Override
+	public List<Exam> getActiveExamsByCategory(Category category) {
+		return examRepository.findByCategoryAndActive(category, true);
 	}
 }
