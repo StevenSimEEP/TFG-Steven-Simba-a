@@ -1,0 +1,48 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt20">
+          <mat-card-header>
+            <mat-card-title>
+              Lea las instrucciones de esta página cuidadosamente
+            </mat-card-title>
+            <mat-card-subtitle>Un paso más para ir</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="ml30">
+            <br>
+            <h1>{{ exam.title }}</h1>
+            <p>{{ exam.description }}</p>
+            <mat-divider></mat-divider>
+            <br>
+          <h1>Instrucciones importantes</h1>
+
+          <ul>
+            <li>Este custionario es solo para fines de práctica</li>
+            <li>Tienes que enviar el cuestionario en <b>{{ exam.numberQuestions * 2 }} minutos</b></li>
+            <li>Puede intentar el cuestionario cualquier cantidad de veces</li>
+            <li>Hay <b>{{ exam.pointsMax/exam.numberQuestions }} puntos por pregunta</b></li>
+          </ul>
+          <mat-divider></mat-divider>
+          <br>
+          <h1>Intentos de la prueba</h1>
+
+          <ul>
+            <li>Presione el botón <b>Empezar</b> para iniciar el exámen</li>
+            <li>El tiempo comenzará en el que haga click en el botón de inicio</li>
+            <li>No puede reanudar este cuestionario si se interrumpe por algún motivo</li>
+            <li>Desplácese hacia abajo para pasar a lla siguiente pregunta</li>
+            <li>Haga click en el botón enviar cuestionario al finalizar el cuestionario</li>
+            <li>El informe de la prueba se genera automáticamente en forma de copia PDF</li>
+          </ul>
+          </mat-card-content>
+          <mat-card-actions class="text-center mb20 mt20">
+            <button (click) = "empezarExamen()" mat-raised-button color = "primary">
+              Comenzar prueba
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
