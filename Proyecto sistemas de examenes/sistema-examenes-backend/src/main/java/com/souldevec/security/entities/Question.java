@@ -34,6 +34,10 @@ public class Question {
 	@Column(nullable = false)
 	private String option4;
 	
+	@Transient
+	@Column(nullable = false)
+	private String responseGiven;
+	
 	@Column(nullable = false)
 	private String response;
 
@@ -111,6 +115,14 @@ public class Question {
 
 	public void setExam(Exam exam) {
 		this.exam = exam;
+	}
+
+	public String getResponseGiven() {
+		return responseGiven;
+	}
+
+	public void setResponseGiven(String responseGiven) {
+		this.responseGiven = responseGiven;
 	}
 
 	public Question() {

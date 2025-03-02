@@ -17,7 +17,7 @@
   <!-- Mostrar datos del usuario si está logueado -->
   <ng-container *ngIf="login.isLoggedIn()">
     <button mat-button style="margin-right: 10px;" routerLink="/admin/profile">
-      {{ user?.userName || user.username }}
+      {{ user?.username || user.username }}
     </button>
     <a (click)="logout()" mat-button>Cerrar sesión</a>
   </ng-container>

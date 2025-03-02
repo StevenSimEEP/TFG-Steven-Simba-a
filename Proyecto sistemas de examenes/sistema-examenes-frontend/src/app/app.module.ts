@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
@@ -82,7 +83,8 @@ import { StartComponent } from './pages/user/start/start.component';
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideClientHydration(),

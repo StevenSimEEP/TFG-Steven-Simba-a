@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class InstruccionesComponent implements OnInit{
 
   examId:any;
-  exam:any;
+  exam:any = new Object();
 
   constructor(
     private exameneService:ExamenService,
