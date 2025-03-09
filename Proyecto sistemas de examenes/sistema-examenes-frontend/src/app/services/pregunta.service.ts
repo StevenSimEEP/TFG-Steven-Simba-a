@@ -32,4 +32,8 @@ export class PreguntaService {
   public listarPreguntasDelExamenParaPrueba(examId:any) {
     return this.http.get(`${baseUrl}/question/exam/all/${examId}`);
   }
+
+  public evaluarExamen(questions:any) {
+    return this.http.post(`${baseUrl}/question/evaluate-exam`, questions);
+  }
 }

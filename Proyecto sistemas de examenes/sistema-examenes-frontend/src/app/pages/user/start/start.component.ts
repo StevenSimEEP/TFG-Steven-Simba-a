@@ -87,7 +87,23 @@ export class StartComponent implements OnInit{
   }
 
   evaluarExamen() {
-    this.isSent = true;
+    if (!this.questions || this.questions.length === 0) {
+      console.error("No hay preguntas para evaluar");
+      return;
+    }
+    this.preguntaService.evaluarExamen(this.questions).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.pointsEarned = data.pointsMax;
+        this.correctResponses = data.correctResponses;
+        this.attempts = data.attempts;
+        this.isSent = true;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+   /* this.isSent = true;
     this.questions.forEach((q:any) => {
       if(q.responseGiven == q.response) {
         this.correctResponses ++;
@@ -103,12 +119,16 @@ export class StartComponent implements OnInit{
     console.log('Respuestas correctas:' + this.correctResponses);
     console.log('Puntos conseguidos: ' + this.pointsEarned);
     console.log('Intentos: ' + this.attempts);
-    console.log(this.questions);
+    console.log(this.questions); */
   }
 
   obtenerHoraFormateada () {
     let mm = Math.floor(this.timer/60);
     let ss = this.timer - mm*60;
     return `${mm} : min : ${ss} seg`;
+  }
+
+  imprimirPagina() {
+    window.print();
   }
 }

@@ -3,13 +3,22 @@
     <div class="row">
       <div class="col-md-2">
         <!--Instrucciones-->
-        <h3>Instrucciones</h3>
+        <mat-card style="margin-top: 70px;">
+          <mat-card-content>
+            <h3><b>Instrucciones</b></h3>
+            <ul>
+              <li>No actualice la página, de lo contrario obtendrá nuevas preguntas</li>
+              <li>No cambies las pestañas</li>
+              <li>No minimices la ventana</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
       </div>
       <div class="col-md-7">
         <!--Preguntas-->
-        <ng-container *ngIf = "questions">
+        <ng-container *ngIf="questions?.length > 0">
           <h1 class="mt20">
-            En curso <b>{{ questions[0].exam.title }}</b>
+            En curso <b>{{ questions[0].exam?.title }}</b>
           </h1>
         </ng-container>
 
@@ -55,7 +64,9 @@
           </mat-card-header>
           <mat-card-content>
             <h1 class="text-center">{{ obtenerHoraFormateada() }}</h1>
-            <mat-spinner mode="determinate" style="margin: auto;" [value] = "(timer/(this.questions.length * 2 * 60)*100)"></mat-spinner>
+            <mat-spinner *ngIf="questions?.length" mode="determinate" style="margin: auto;"
+            [value]="(timer/(questions.length * 2 * 60)*100)">
+            </mat-spinner>
           </mat-card-content>
         </mat-card>
       </div>
@@ -64,7 +75,7 @@
 </div>
 
 <div class="bootstrap-wrapper" *ngIf = "isSent">
-  <div class="row mt20">
+  <div class="container mt20">
     <div class="col-md-6 offset-md-3">
       <mat-card>
         <mat-card-header>
@@ -77,7 +88,7 @@
           <h1>Respuestas correctas: {{ correctResponses }}</h1>
         </mat-card-content>
         <mat-card-actions class="text-center">
-          <button mat-raised-button color="primary" class="mr10">Imprimir</button>
+          <button (click) = "imprimirPagina()" mat-raised-button color="primary" class="mr10">Imprimir</button>
           <button mat-raised-button color="accent" [routerLink] = "'/user-dashboard/0'" class="ml10">Inicio</button>
         </mat-card-actions>
       </mat-card>
