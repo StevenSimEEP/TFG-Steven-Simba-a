@@ -1,20 +1,13 @@
-<mat-toolbar color="primary">
-  <!-- Icono y título -->
+<mat-toolbar *ngIf="!isHomePage()" color="primary">
   <a [routerLink]="'/'" mat-icon-button aria-label="Ir al inicio">
     <mat-icon>menu_books</mat-icon>
   </a>
   <span>Portal de exámenes</span>
-
-  <!-- Espaciador -->
   <span class="example-spacer"></span>
-
-  <!-- Mostrar botones solo si el usuario no está logueado -->
   <ng-container *ngIf="!login.isLoggedIn()">
     <a [routerLink]="'/login'" mat-button>Iniciar sesión</a>
     <a [routerLink]="'/signup'" mat-button>Registrar</a>
   </ng-container>
-
-  <!-- Mostrar datos del usuario si está logueado -->
   <ng-container *ngIf="login.isLoggedIn()">
     <button mat-button style="margin-right: 10px;" routerLink="/admin/profile">
       {{ user?.username || user.username }}

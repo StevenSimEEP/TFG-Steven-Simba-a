@@ -1,0 +1,61 @@
+.welcome-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.content-overlay {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 30%;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.074); /* Menos opaco */
+  backdrop-filter: blur(3px); /* Blur más sutil */
+  border-radius: 15px;
+  border: 2px solid white;
+  text-align: center;
+  color: white;
+}
+
+.content-overlay h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.content-overlay p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #035096;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #023b73;
+}
