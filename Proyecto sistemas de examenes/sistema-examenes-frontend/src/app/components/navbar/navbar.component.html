@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="!isHomePage()" color="primary">
+<mat-toolbar *ngIf="!isHomePage() && !isLoginPage() && !isRegisterPage()" color="primary">
   <a [routerLink]="'/'" mat-icon-button aria-label="Ir al inicio">
     <mat-icon>menu_books</mat-icon>
   </a>

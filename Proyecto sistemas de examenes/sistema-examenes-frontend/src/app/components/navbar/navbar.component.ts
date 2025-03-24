@@ -37,4 +37,12 @@ export class NavbarComponent implements OnInit {
   isHomePage(): boolean {
     return this.router.url === '/';
   }
+
+  isLoginPage(): boolean {
+    return this.router.url == '/login';
+  }
+
+  isRegisterPage(): boolean {
+    return this.router.url == '/signup';
+  }
 }
