@@ -1,0 +1,78 @@
+/* HERO HEADER */
+.hero-section {
+  width: 100%; /* Ocupa el ancho completo de la ventana */
+  height: 40vh; /* 40% de la altura de la ventana */
+  background-color: #ff5f5f;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 2rem;
+}
+
+.hero-overlay {
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(3px);
+}
+
+.hero-overlay h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  color: #ff5f5f;
+}
+
+/* TARJETAS DE BIENVENIDA */
+.welcome-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+mat-icon {
+  font-size: 48px;
+  color: #035096; /* Azul medio */
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+button {
+  margin-top: 1rem;
+}

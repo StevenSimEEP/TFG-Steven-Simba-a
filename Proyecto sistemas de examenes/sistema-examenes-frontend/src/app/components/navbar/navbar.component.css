@@ -1,3 +1,22 @@
-.example-spacer{
+.spacer {
   flex: 1 1 auto;
+}
+
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 240px;
+  transition: width 0.3s ease;
+}
+
+.sidenav.collapsed {
+  width: 60px;
+}
+
+/* Asegúrate de no tener un z-index que tape el contenido */
+.sidenav,
+.mat-sidenav-content {
+  z-index: 1;
 }

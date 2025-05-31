@@ -103,29 +103,12 @@ export class StartComponent implements OnInit{
         console.log(error);
       }
     );
-   /* this.isSent = true;
-    this.questions.forEach((q:any) => {
-      if(q.responseGiven == q.response) {
-        this.correctResponses ++;
-        let score = this.questions[0].exam.pointsMax/this.questions.length;
-        this.pointsEarned += score;
-      }
-
-      if(q.responseGiven.trim() != '') {
-        this.attempts ++;
-      }
-    });
-
-    console.log('Respuestas correctas:' + this.correctResponses);
-    console.log('Puntos conseguidos: ' + this.pointsEarned);
-    console.log('Intentos: ' + this.attempts);
-    console.log(this.questions); */
   }
 
   obtenerHoraFormateada () {
     let mm = Math.floor(this.timer/60);
     let ss = this.timer - mm*60;
-    return `${mm} : min : ${ss} seg`;
+    return `${mm} min : ${ss} s`;
   }
 
   imprimirPagina() {

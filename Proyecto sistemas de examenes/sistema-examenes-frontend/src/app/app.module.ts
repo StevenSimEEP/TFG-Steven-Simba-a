@@ -24,11 +24,12 @@ import { HomeComponent } from './pages/home/home.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatRadioModule } from '@angular/material/radio';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriasComponent } from './pages/admin/view-categorias/view-categorias.component';
 import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
@@ -43,6 +44,7 @@ import { LoadExamenComponent } from './pages/user/load-examen/load-examen.compon
 import { InstruccionesComponent } from './pages/user/instrucciones/instrucciones.component';
 import { StartComponent } from './pages/user/start/start.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,6 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     DashboardComponent,
     UserDashboardComponent,
     ProfileComponent,
-    SidebarComponent,
     WelcomeComponent,
     ViewCategoriasComponent,
     AddCategoriaComponent,
@@ -64,6 +65,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     ViewExamenPreguntasComponent,
     AddPreguntaComponent,
     ActualizarPreguntaComponent,
+    SidebarComponent,
     UserSidebar,
     LoadExamenComponent,
     InstruccionesComponent,
@@ -76,6 +78,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatRadioModule,
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
@@ -87,6 +90,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     MatSelectModule,
     MatProgressSpinnerModule,
     NgxUiLoaderModule,
+    MatSidenavModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true
     })

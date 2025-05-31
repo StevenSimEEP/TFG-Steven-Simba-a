@@ -1,33 +1,19 @@
-<mat-card class="categoria-container">
-  <mat-card-header>
-    <mat-card-title>Todas las categorías</mat-card-title>
-  </mat-card-header>
-
-  <mat-divider></mat-divider>
-
-  <div class="categoria-list">
-    <mat-card *ngFor="let c of categorias" class="categoria-item">
-      <mat-card-content>
-        <mat-icon class="categoria-icon">category</mat-icon>
-        <div class="categoria-info">
-          <h3>{{ c.title }}</h3>
-          <p>{{ c.description }}</p>
-        </div>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="editarCategoria(c)">
-          <mat-icon>edit</mat-icon> Editar
-        </button>
-        <button mat-raised-button color="warn" (click)="eliminarCategoria(c.id)">
-          <mat-icon>delete</mat-icon> Eliminar
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-
-  <div class="button-container">
-    <button routerLink="/admin/add-categoria" mat-raised-button color="primary">
-      <mat-icon>add</mat-icon> Agregar categoría
-    </button>
-  </div>
-</mat-card>
+<div class="categoria-grid">
+  <mat-card *ngFor="let c of categorias" class="categoria-item">
+    <mat-card-content class="categoria-card-content">
+      <mat-icon class="categoria-icon">category</mat-icon>
+      <div class="categoria-info">
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.description }}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="categoria-actions">
+      <button mat-stroked-button color="accent" (click)="editarCategoria(c)">
+        <mat-icon>edit</mat-icon> Editar
+      </button>
+      <button mat-stroked-button color="warn" (click)="eliminarCategoria(c.id)">
+        <mat-icon>delete</mat-icon> Eliminar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

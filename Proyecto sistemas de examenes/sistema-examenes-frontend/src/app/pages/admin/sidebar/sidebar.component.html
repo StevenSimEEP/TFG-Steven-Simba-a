@@ -1,26 +1,30 @@
-<mat-card>
-  <mat-action-list>
-    <div mat-subheader>Menu</div>
-    <button routerLink="/admin" mat-list-item>
-      <mat-icon mat-list-icon>home</mat-icon>Inicio
-    </button>
-    <button mat-list-item routerLink="/admin/profile">
-      <mat-icon mat-list-icon>account_circle</mat-icon>Perfil
-    </button>
-    <button mat-list-item routerLink="/admin/categorias">
-      <mat-icon mat-list-icon>list</mat-icon>Categorías
-    </button>
-    <button mat-list-item routerLink="/admin/add-categoria">
-      <mat-icon mat-list-icon>add_circle_outline</mat-icon>Agregar categoría
-    </button>
-    <button mat-list-item routerLink="/admin/examenes">
-      <mat-icon mat-list-icon>quiz</mat-icon>Cuestonarios
-    </button>
-    <button mat-list-item routerLink="/admin/add-examen">
-      <mat-icon mat-list-icon>add</mat-icon>Agregar cuestonario
-    </button>
-    <button mat-list-item (click) = "logout()">
-      <mat-icon mat-list-icon>logout</mat-icon>Salir
-    </button>
-  </mat-action-list>
-</mat-card>
+<mat-nav-list>
+  <a mat-list-item routerLink="/admin" routerLinkActive="active-link">
+    <mat-icon class="menu-icon">home</mat-icon>
+    <span class="menu-text">Inicio</span>
+  </a>
+  <a mat-list-item routerLink="/admin/profile" routerLinkActive="active-link">
+    <mat-icon class="menu-icon">person</mat-icon>
+    <span class="menu-text">Perfil</span>
+  </a>
+  <a mat-list-item routerLink="/admin/categorias" routerLinkActive="active-link">
+    <mat-icon class="menu-icon">list</mat-icon>
+    <span class="menu-text">Categorías</span>
+  </a>
+  <a mat-list-item routerLink="/admin/add-categoria" routerLinkActive="active-link">
+    <mat-icon class="menu-icon">add_circle</mat-icon>
+    <span class="menu-text">Agregar categoría</span>
+  </a>
+  <a mat-list-item routerLink="/admin/examenes" routerLinkActive="active-link">
+    <mat-icon class="menu-icon">assignment</mat-icon>
+    <span class="menu-text">Cuestionarios</span>
+  </a>
+  <a mat-list-item routerLink="/admin/add-examen" routerLinkActive="active-link">
+    <mat-icon class="menu-icon">note_add</mat-icon>
+    <span class="menu-text">Agregar cuestionario</span>
+  </a>
+  <a mat-list-item (click)="logout()">
+    <mat-icon class="menu-icon">logout</mat-icon>
+    <span class="menu-text">Salir</span>
+  </a>
+</mat-nav-list>

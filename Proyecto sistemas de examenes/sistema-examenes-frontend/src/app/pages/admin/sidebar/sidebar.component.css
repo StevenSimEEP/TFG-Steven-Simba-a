@@ -1,0 +1,36 @@
+.sidebar-admin,
+.sidebar-user {
+  width: 240px;
+  transition: width 0.3s ease;
+}
+
+.sidebar-admin.collapsed,
+.sidebar-user.collapsed {
+  width: 60px;
+}
+
+/* Ajustar los iconos para que se mantengan visibles */
+.sidebar-admin.collapsed mat-list-item mat-icon,
+.sidebar-user.collapsed mat-list-item mat-icon {
+  margin-right: 0;
+  font-size: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Ocultar texto cuando el sidebar está colapsado */
+.sidebar-admin.collapsed mat-list-item span,
+.sidebar-user.collapsed mat-list-item span {
+  display: none;
+}
+
+.menu-icon {
+  margin-right: 12px;
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+.menu-text {
+  vertical-align: middle;
+  font-size: 16px;
+}

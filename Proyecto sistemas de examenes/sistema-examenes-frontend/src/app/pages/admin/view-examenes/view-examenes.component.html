@@ -14,7 +14,6 @@
       <button mat-stroked-button color="primary" class="ml20">Puntos máximos {{ e.pointsMax }}</button>
       <button mat-stroked-button color="primary" class="ml20">Preguntas {{ e.numberQuestions }}</button>
       <button [routerLink] = "'/admin/examen/'+e.examId" mat-flat-button color="primary" class="ml20">Actualizar</button>
-      <button mat-flat-button color="primary" class="ml20">Intentos</button>
       <button mat-flat-button color="warn" class="ml10" (click) = "eliminarExamen(e.examId)">Eliminar</button>
     </mat-card-actions>
   </mat-card-content>

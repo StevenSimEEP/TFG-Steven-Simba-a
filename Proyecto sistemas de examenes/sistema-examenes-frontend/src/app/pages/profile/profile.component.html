@@ -1,31 +1,31 @@
-<mat-card style="margin-left: 10px;">
-  <h1>Detalles del perfil</h1>
+<mat-card style="margin-left: 10px; margin-top: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+  <h1 class="card-title">Detalles del perfil</h1>
   <mat-card-content>
     <div class="bootstrap-wrapper">
       <div class="container">
         <div class="text-center">
           <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-          alt="" class="profile-image">
+          alt="Imagen de perfil" class="profile-image">
 
-          <h1 class="mt20">{{ user.nombre }}  {{ user.apellido }}</h1>
+          <h2 class="mt20">{{ user.nombre }}  {{ user.apellido }}</h2>
         </div>
         <div class="row">
           <div class="col-md-10 offset-md-1">
             <table class="table text-center">
               <tr>
-                <td>Nombre de usuario</td>
+                <td><strong>Nombre de usuario</strong></td>
                 <td>{{ user.username }}</td>
               </tr>
               <tr>
-                <td>Email</td>
+                <td><strong>Email</strong></td>
                 <td>{{ user.email }}</td>
               </tr>
               <tr>
-                <td>Teléfono</td>
+                <td><strong>Teléfono</strong></td>
                 <td>{{ user.telefono }}</td>
               </tr>
               <tr>
-                <td>Rol</td>
+                <td><strong>Rol</strong></td>
                 <td>{{ user.authorities[0].authority }}</td>
               </tr>
             </table>
@@ -33,9 +33,5 @@
         </div>
       </div>
     </div>
-    <mat-card-actions class="text-center">
-      <button mat-raised-button color="primary">Actualizar</button>
-      <button mat-raised-button color="accent">Compartir</button>
-    </mat-card-actions>
   </mat-card-content>
 </mat-card>

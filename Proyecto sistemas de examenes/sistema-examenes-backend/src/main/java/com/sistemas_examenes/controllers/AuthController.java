@@ -23,7 +23,6 @@ import com.sistemas_examenes.dtos.NewUserDto;
 import com.sistemas_examenes.entities.User;
 import com.sistemas_examenes.repositories.UserRepository;
 import com.sistemas_examenes.services.AuthService;
-import com.sistemas_examenes.services.UserService;
 
 @RestController
 @RequestMapping("/auth")
@@ -31,13 +30,11 @@ import com.sistemas_examenes.services.UserService;
 public class AuthController {
 
 	private final AuthService authService;
-	private final UserService userService;
 	private final UserRepository userRepository;
 
 	@Autowired
-	public AuthController(AuthService authService, UserService userService, UserRepository userRepository) {
+	public AuthController(AuthService authService, UserRepository userRepository) {
 		this.authService = authService;
-		this.userService = userService;
 		this.userRepository = userRepository;
 	}
 

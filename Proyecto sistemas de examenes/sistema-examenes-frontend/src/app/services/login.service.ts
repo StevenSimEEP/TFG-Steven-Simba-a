@@ -58,10 +58,14 @@ export class LoginService {
     }
   }
 
-  public getUserRole() {
+  public getUserRole(): string | null {
     let user = this.getUser();
-    return user.authorities[0].authority;
+    if (user && user.authorities) {
+      return user.authorities.map((auth: any) => auth.authority)[0]; // Tomamos el primer rol
+    }
+    return null;
   }
+
 
   public getCurrentUser() {
     const headers = new HttpHeaders({

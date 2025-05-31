@@ -1,17 +1,44 @@
-<mat-toolbar *ngIf="!isHomePage() && !isLoginPage() && !isRegisterPage()" color="primary">
+<mat-toolbar color="primary">
+  <!-- Icono de hamburguesa (solo se muestra si NO estamos en home/login/signup y SI hay sesión) -->
+  <button
+    mat-icon-button
+    *ngIf="!isHiddenRoute() && isLoggedIn"
+    (click)="toggleMenu()"
+  >
+    <mat-icon>{{ isMenuOpen ? 'chevron_left' : 'menu' }}</mat-icon>
+  </button>
+
+  <!-- Logo a la izquierda -->
   <a [routerLink]="'/'" mat-icon-button aria-label="Ir al inicio">
     <mat-icon>menu_books</mat-icon>
   </a>
-  <span>Portal de exámenes</span>
-  <span class="example-spacer"></span>
-  <ng-container *ngIf="!login.isLoggedIn()">
-    <a [routerLink]="'/login'" mat-button>Iniciar sesión</a>
-    <a [routerLink]="'/signup'" mat-button>Registrar</a>
-  </ng-container>
-  <ng-container *ngIf="login.isLoggedIn()">
-    <button mat-button style="margin-right: 10px;" routerLink="/admin/profile">
-      {{ user?.username || user.username }}
-    </button>
-    <a (click)="logout()" mat-button>Cerrar sesión</a>
-  </ng-container>
+
+  <!-- Título en la barra -->
+  <span style="margin-left: 10px;">Gestión de Exámenes</span>
+
+  <!-- Empuja todo lo que siga a la derecha -->
+  <span class="spacer"></span>
+
+  <!-- Botón de Cerrar Sesión a la derecha (solo si hay sesión) -->
+  <button mat-button *ngIf="isLoggedIn" (click)="logout()" style="margin-right: 10px;">
+    Cerrar sesión
+  </button>
 </mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container" *ngIf="!isHiddenRoute() && isLoggedIn">
+  <mat-sidenav mode="side" opened [class.collapsed]="!isMenuOpen" class="sidenav">
+
+    <ng-container *ngIf="isAdmin">
+      <app-sidebar-admin [collapsed]="!isMenuOpen"></app-sidebar-admin>
+    </ng-container>
+
+    <ng-container *ngIf="isUser">
+      <app-sidebar-user [collapsed]="!isMenuOpen"></app-sidebar-user>
+    </ng-container>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

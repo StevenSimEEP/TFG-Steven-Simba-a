@@ -1,30 +1,25 @@
-<mat-card class="mt20">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <mat-card-header>
-          <mat-card-title>
-            Bienvenido administrador
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-subtitle>Panel de administrador</mat-card-subtitle>
-        <mat-card-content class="ml30">
-          <h1></h1>
-          <p></p>
-          <mat-divider></mat-divider>
-          <br>
-          <h1>Sus funciones:</h1>
-          <ul>
-            <li>Gestionar las categorías</li>
-            <li>Gestionar los exámenes</li>
-            <li>Asignar exámenes a distintas categorías</li>
-            <li>Gestionar preguntas</li>
-            <li>Asignar preguntas a cada examen</li>
-          </ul>
-          <mat-divider></mat-divider>
-          <br>
-        </mat-card-content>
-      </div>
-    </div>
+
+
+<!-- TARJETAS DE BIENVENIDA -->
+<div class="welcome-grid">
+  <div class="card" (click)="goTo('categorias')">
+    <mat-icon>category</mat-icon>
+    <h3>Categorías</h3>
+    <p>Gestiona las distintas categorías de exámenes.</p>
+    <button mat-raised-button color="primary">Ir a Categorías</button>
   </div>
-</mat-card>
+
+  <div class="card" (click)="goTo('examenes')">
+    <mat-icon>assignment</mat-icon>
+    <h3>Exámenes</h3>
+    <p>Crea y asigna exámenes según la categoría.</p>
+    <button mat-raised-button color="primary">Ir a Exámenes</button>
+  </div>
+
+  <div class="card" (click)="goTo('preguntas')">
+    <mat-icon>help</mat-icon>
+    <h3>Preguntas</h3>
+    <p>Administra preguntas y asígnalas a los exámenes.</p>
+    <button mat-raised-button color="primary">Ir a Preguntas</button>
+  </div>
+</div>

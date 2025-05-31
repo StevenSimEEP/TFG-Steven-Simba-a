@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn = false;
-  user:any = null;
+  user: any = null;
+  isAdmin = false;
+  isUser = false;
+  isMenuOpen = true;
 
   constructor(
     public login: LoginService,
@@ -20,29 +22,39 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.login.isLoggedIn();
     this.user = this.login.getUser();
-    this.login.loginStatusSubjec.asObservable().subscribe(
-      data => {
-        this.isLoggedIn = this.login.isLoggedIn();
-        this.user = this.login.getUser();
+
+    console.log('Usuario cargado:', this.user);
+
+    if (this.user) {
+      this.isAdmin = this.login.getUserRole() === 'ADMIN';
+      this.isUser = this.login.getUserRole() === 'NORMAL';
+    }
+
+    // Escuchar cambios en la sesión
+    this.login.loginStatusSubjec.asObservable().subscribe(() => {
+      this.isLoggedIn = this.login.isLoggedIn();
+      this.user = this.login.getUser();
+      if (this.user) {
+        this.isAdmin = this.login.getUserRole() === 'ADMIN';
+        this.isUser = this.login.getUserRole() === 'ADMIN';
       }
-    )
+    });
   }
 
   public logout() {
     this.login.logout();
     this.user = null;
+    this.isAdmin = false;
+    this.isUser = false;
     window.location.reload();
   }
 
-  isHomePage(): boolean {
-    return this.router.url === '/';
+  isHiddenRoute(): boolean {
+    const hiddenRoutes = ['/', '/login', '/signup'];
+    return hiddenRoutes.includes(this.router.url);
   }
 
-  isLoginPage(): boolean {
-    return this.router.url == '/login';
-  }
-
-  isRegisterPage(): boolean {
-    return this.router.url == '/signup';
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

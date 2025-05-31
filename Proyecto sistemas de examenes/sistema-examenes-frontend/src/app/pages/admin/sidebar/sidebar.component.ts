@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoginService } from '../../../services/login.service';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-sidebar-admin',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent implements OnInit {
   constructor(public login: LoginService) {}
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {}
 
-    public logout() {
-      this.login.logout();
-      window.location.reload();
-    }
+  @Input() collapsed: boolean = false;
+
+  public logout() {
+    this.login.logout();
+    window.location.reload();
+  }
 }

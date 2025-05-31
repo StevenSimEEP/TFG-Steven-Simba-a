@@ -1,0 +1,43 @@
+/* Contenedor lateral */
+.sidebar-admin,
+.sidebar-user {
+  width: 240px;
+  transition: width 0.3s ease;
+}
+
+.sidebar-admin.collapsed,
+.sidebar-user.collapsed {
+  width: 60px;
+}
+
+/* Íconos en negro y alineados verticalmente */
+mat-icon[mat-list-icon] {
+  color: black;
+  font-size: 24px;
+  line-height: 1; /* importante para alinear verticalmente */
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+/* Texto bien alineado junto al ícono */
+mat-list-item span {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* Si el sidebar está colapsado, ocultamos el texto */
+.sidebar-admin.collapsed mat-list-item span,
+.sidebar-user.collapsed mat-list-item span {
+  display: none;
+}
+
+/* Centrado del icono cuando está colapsado */
+.sidebar-admin.collapsed mat-list-item mat-icon,
+.sidebar-user.collapsed mat-list-item mat-icon {
+  margin-right: 0;
+  width: 100%;
+  justify-content: center;
+}
