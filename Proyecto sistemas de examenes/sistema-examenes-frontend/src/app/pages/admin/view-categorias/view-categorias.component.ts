@@ -7,13 +7,18 @@ import Swal from 'sweetalert2';
   templateUrl: './view-categorias.component.html',
   styleUrl: './view-categorias.component.css'
 })
-export class ViewCategoriasComponent implements OnInit{
+export class ViewCategoriasComponent implements OnInit {
 
   categorias: any = [];
 
   constructor(private categoriaService: CategoriaService) { }
 
   ngOnInit(): void {
+    this.cargarCategorias();
+  }
+
+  // 🔄 Método reutilizable para cargar categorías
+  cargarCategorias(): void {
     this.categoriaService.listarCategorias().subscribe(
       (dato: any) => {
         console.log('Respuesta de la API:', dato);
@@ -31,7 +36,7 @@ export class ViewCategoriasComponent implements OnInit{
     );
   }
 
-  eliminarCategoria(id: number) {
+  eliminarCategoria(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'No podrás revertir esto',
@@ -44,7 +49,7 @@ export class ViewCategoriasComponent implements OnInit{
       if (result.isConfirmed) {
         this.categoriaService.eliminarCategoria(id).subscribe(
           (response) => {
-            this.categorias = this.categorias.filter((categoria: any) => categoria.id !== id);
+            this.cargarCategorias(); // 🔁 recarga desde la API para reflejar cambios
             Swal.fire('Eliminado!', 'La categoría ha sido eliminada.', 'success');
           },
           (error) => {
@@ -55,7 +60,7 @@ export class ViewCategoriasComponent implements OnInit{
     });
   }
 
-  editarCategoria(categoria: any) {
+  editarCategoria(categoria: any): void {
     console.log("Categoría recibida para editar:", categoria);
 
     if (!categoria || (!categoria.title && !categoria.nombre)) {
@@ -82,7 +87,7 @@ export class ViewCategoriasComponent implements OnInit{
         let categoriaActualizada = { ...categoria, title: result.value || categoria.nombre };
         this.categoriaService.actualizarCategoria(categoriaActualizada).subscribe(
           (data) => {
-            categoria.title = result.value;
+            this.cargarCategorias(); // recarga también después de editar
             Swal.fire('Actualizado', 'Categoría actualizada correctamente', 'success');
           },
           (error) => {
@@ -92,5 +97,4 @@ export class ViewCategoriasComponent implements OnInit{
       }
     });
   }
-
 }

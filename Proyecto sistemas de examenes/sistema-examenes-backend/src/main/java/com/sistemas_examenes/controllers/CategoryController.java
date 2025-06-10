@@ -1,5 +1,8 @@
 package com.sistemas_examenes.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -50,12 +53,16 @@ public class CategoryController {
 	}
 	
 	@DeleteMapping("/{categoryId}")
-	public ResponseEntity<?> deleteCategory(@PathVariable("categoryId") Long categoryId) {
+	public ResponseEntity<Map<String, String>> deleteCategory(@PathVariable("categoryId") Long categoryId) {
 	    try {
 	        categoryService.deleteCategory(categoryId);
-	        return ResponseEntity.ok().body("Categoría eliminada correctamente");
+	        Map<String, String> response = new HashMap<>();
+	        response.put("message", "Categoría eliminada correctamente");
+	        return ResponseEntity.ok(response);
 	    } catch (RuntimeException e) {
-	        return ResponseEntity.status(404).body("No se encontró la categoría con ID: " + categoryId);
+	        Map<String, String> error = new HashMap<>();
+	        error.put("error", "No se encontró la categoría con ID: " + categoryId);
+	        return ResponseEntity.status(404).body(error);
 	    }
 	}
 }
